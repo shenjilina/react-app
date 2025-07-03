@@ -1,31 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { RouterProvider } from "react-router";
+import router from "./router/index.ts";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  const str: string = 'ABC'
-  const handleStr = <T,>(params: T) => {
-    console.log(params)
-  }
-  const htmlstr = '<p><b style="color:red">woshi123</b></p>'
-
-  const list = ['123', '456', '789']
+const App: React.FC = () => {
   return (
     <>
-      <p data-index={str} className={`${str}-1`} onClick={() => handleStr(str)}>{str}</p>
-      <p dangerouslySetInnerHTML={{ __html: htmlstr }}></p>
-      <ul>
-        {
-          list.map((item, index) => {
-            return <li key={index}>{item}</li>
-          })
-        }
-      </ul>
+      <RouterProvider router={router} />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
