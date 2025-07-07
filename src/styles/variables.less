@@ -1,0 +1,44 @@
+// Less变量定义文件
+@primary-color: #1890ff;
+@success-color: #52c41a;
+@warning-color: #faad14;
+@error-color: #f5222d;
+@info-color: #1890ff;
+
+// 字体大小
+@font-size-base: 14px;
+@font-size-lg: 16px;
+@font-size-sm: 12px;
+
+// 间距
+@padding-base: 8px;
+@padding-lg: 16px;
+@padding-sm: 4px;
+
+// 边框
+@border-radius-base: 4px;
+@border-color-base: #d9d9d9;
+
+// 阴影
+@box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+// 混合器示例
+.flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-style(@bg-color: @primary-color, @text-color: #fff) {
+  background-color: @bg-color;
+  color: @text-color;
+  border: none;
+  padding: @padding-base @padding-lg;
+  border-radius: @border-radius-base;
+  cursor: pointer;
+  transition: all 0.3s;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
