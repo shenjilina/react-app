@@ -1,5 +1,5 @@
 import { isRouteProtected } from '@/config/routes'
-import MainLayout from '@/layout/MainLayout'
+import AppLayout from '@/layout'
 import About from '@/pages/About'
 import Contact from '@/pages/Contact'
 import Home from '@/pages/Home'
@@ -11,7 +11,6 @@ import {
   validateToken,
 } from '@/utils/auth'
 import React from 'react'
-import { Outlet } from 'react-router'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 // 受保护的路由组件
@@ -76,9 +75,7 @@ export const router = createBrowserRouter([
     path: '/',
     element: (
       <ProtectedRoute>
-        <MainLayout>
-          <Outlet />
-        </MainLayout>
+        <AppLayout />
       </ProtectedRoute>
     ),
     children: [
@@ -90,7 +87,7 @@ export const router = createBrowserRouter([
         path: 'dashboard',
         element: (
           <RouteGuard path='/dashboard'>
-            <Home />
+            <div>dashboard</div>
           </RouteGuard>
         ),
       },
