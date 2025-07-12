@@ -1,9 +1,15 @@
 import { isRouteProtected } from '@/config/routes'
 import AppLayout from '@/layout'
-import About from '@/pages/About'
-import Contact from '@/pages/Contact'
+import UsersManage from '@/pages/UsersManage'
+import RolesManage from '@/pages/RolesManage'
+import PermissionsManage from '@/pages/PermissionsManage'
+import ArticlesManage from '@/pages/ArticlesManage'
+import CategoriesManage from '@/pages/CategoriesManage'
+import StatisticsManage from '@/pages/StatisticsManage'
+import SettingsManage from '@/pages/SettingsManage'
 import Home from '@/pages/Home'
 import Login from '@/pages/Login'
+import Register from '@/pages/Register'
 import {
   getToken,
   isAuthenticated,
@@ -72,6 +78,14 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: '/register',
+    element: (
+      <RouteGuard path='/register'>
+        <Register />
+      </RouteGuard>
+    ),
+  },
+  {
     path: '/',
     element: (
       <ProtectedRoute>
@@ -81,15 +95,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to='/dashboard' replace />,
-      },
-      {
-        path: 'dashboard',
-        element: (
-          <RouteGuard path='/dashboard'>
-            <div>dashboard</div>
-          </RouteGuard>
-        ),
+        element: <Navigate to='/home' replace />,
       },
       {
         path: 'home',
@@ -100,26 +106,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'about',
-        element: (
-          <RouteGuard path='/about'>
-            <About />
-          </RouteGuard>
-        ),
-      },
-      {
-        path: 'contact',
-        element: (
-          <RouteGuard path='/contact'>
-            <Contact />
-          </RouteGuard>
-        ),
-      },
-      {
         path: 'users',
         element: (
           <RouteGuard path='/users'>
-            <div>用户管理页面</div>
+            <UsersManage />
           </RouteGuard>
         ),
       },
@@ -127,7 +117,7 @@ export const router = createBrowserRouter([
         path: 'roles',
         element: (
           <RouteGuard path='/roles'>
-            <div>角色管理页面</div>
+            <RolesManage />
           </RouteGuard>
         ),
       },
@@ -135,7 +125,7 @@ export const router = createBrowserRouter([
         path: 'permissions',
         element: (
           <RouteGuard path='/permissions'>
-            <div>权限管理页面</div>
+            <PermissionsManage />
           </RouteGuard>
         ),
       },
@@ -143,7 +133,7 @@ export const router = createBrowserRouter([
         path: 'articles',
         element: (
           <RouteGuard path='/articles'>
-            <div>文章管理页面</div>
+            <ArticlesManage />
           </RouteGuard>
         ),
       },
@@ -151,7 +141,7 @@ export const router = createBrowserRouter([
         path: 'categories',
         element: (
           <RouteGuard path='/categories'>
-            <div>分类管理页面</div>
+            <CategoriesManage />
           </RouteGuard>
         ),
       },
@@ -159,7 +149,7 @@ export const router = createBrowserRouter([
         path: 'statistics',
         element: (
           <RouteGuard path='/statistics'>
-            <div>数据统计页面</div>
+            <StatisticsManage />
           </RouteGuard>
         ),
       },
@@ -167,7 +157,7 @@ export const router = createBrowserRouter([
         path: 'settings',
         element: (
           <RouteGuard path='/settings'>
-            <div>系统设置页面</div>
+            <SettingsManage />
           </RouteGuard>
         ),
       },

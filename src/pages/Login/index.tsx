@@ -1,8 +1,10 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Card, Form, Input, Typography, message } from 'antd'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { setAuth } from '../../utils/auth'
+import { AuthApi } from '@/api/modules/auth'
+import type { LoginParams } from '@/api/modules/auth'
 import './index.less'
 
 const { Title } = Typography
@@ -20,14 +22,17 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: ILoginForm) => {
     setLoading(true)
     try {
-      // 模拟登录API调用
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      const res = await AuthApi.login({
+        username: values.username,
+        password: values.password,
+      })
+      debugger;
 
       // 模拟登录验证
       if (values.username === 'admin' && values.password === '123456') {
         // 生成模拟token
         const token = 'mock_token_' + Date.now()
-        
+
         // 模拟用户信息
         const mockUserInfo = {
           id: 1,
@@ -124,9 +129,9 @@ const Login: React.FC = () => {
             <div className='login-footer'>
               <p className='login-tips'>
                 还没有账户？
-                <a href='#' className='register-link'>
+                <Link to='/register' className='register-link'>
                   立即注册
-                </a>
+                </Link>
               </p>
             </div>
           </Card>

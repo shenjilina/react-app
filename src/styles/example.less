@@ -7,47 +7,47 @@
   padding: @padding-lg;
   border-radius: @border-radius-base;
   box-shadow: @box-shadow-base;
-  
+
   .title {
     font-size: @font-size-lg;
     color: @primary-color;
     margin-bottom: @padding-base;
   }
-  
+
   .button {
     .button-style(@primary-color, #fff);
     margin-right: @padding-base;
-    
+
     &.success {
       .button-style(@success-color, #fff);
     }
-    
+
     &.warning {
       .button-style(@warning-color, #fff);
     }
-    
+
     &.error {
       .button-style(@error-color, #fff);
     }
   }
-  
+
   // 嵌套样式
   .card {
     background: #fff;
     border: 1px solid @border-color-base;
     border-radius: @border-radius-base;
     padding: @padding-lg;
-    
+
     .card-header {
       font-size: @font-size-lg;
       font-weight: bold;
       margin-bottom: @padding-base;
-      
+
       &.primary {
         color: @primary-color;
       }
     }
-    
+
     .card-content {
       font-size: @font-size-base;
       line-height: 1.5;
@@ -59,7 +59,7 @@
 @media (max-width: 768px) {
   .example-component {
     padding: @padding-base;
-    
+
     .button {
       width: 100%;
       margin-bottom: @padding-base;

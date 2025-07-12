@@ -10,14 +10,7 @@
     "editorconfig.editorconfig",
     "mrmlnc.vscode-less",
     "ms-vscode.vscode-css-peek",
-    "zignd.html-css-class-completion",
-    "bradlc.vscode-tailwindcss",
     "ms-vscode.vscode-typescript-next",
-    "gruntfuggly.todo-tree",
-    "streetsidesoftware.code-spell-checker",
-    "usernamehw.errorlens",
-    "ms-vscode.vscode-typescript-next",
-    "bradlc.vscode-tailwindcss"
   ],
   "unwantedRecommendations": [
     "ms-vscode.vscode-typescript",

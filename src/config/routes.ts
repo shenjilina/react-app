@@ -12,13 +12,6 @@ export interface RouteConfig {
 export const routeConfig: RouteConfig[] = [
   {
     key: '1',
-    path: '/dashboard',
-    title: '仪表盘',
-    icon: 'DashboardOutlined',
-    requireAuth: true
-  },
-  {
-    key: '2',
     path: '/home',
     title: '首页',
     icon: 'HomeOutlined',
@@ -96,7 +89,7 @@ export const routeConfig: RouteConfig[] = [
 // 获取所有路由路径的工具函数
 export const getAllRoutePaths = (): string[] => {
   const paths: string[] = []
-  
+
   const extractPaths = (routes: RouteConfig[]) => {
     routes.forEach(route => {
       paths.push(route.path)
@@ -105,7 +98,7 @@ export const getAllRoutePaths = (): string[] => {
       }
     })
   }
-  
+
   extractPaths(routeConfig)
   return paths
 }
@@ -124,7 +117,7 @@ export const getRouteByKey = (key: string): RouteConfig | undefined => {
     }
     return undefined
   }
-  
+
   return findRoute(routeConfig)
 }
 
@@ -142,7 +135,7 @@ export const getRouteByPath = (path: string): RouteConfig | undefined => {
     }
     return undefined
   }
-  
+
   return findRoute(routeConfig)
 }
 

@@ -1,0 +1,405 @@
+.statistics-manage-container {
+  background-color: #f5f5f5;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    padding: 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    color: white;
+
+    .header-left {
+      .ant-typography {
+        color: white;
+        margin: 0;
+      }
+
+      .ant-typography-caption {
+        opacity: 0.8;
+        margin-top: 4px;
+      }
+    }
+
+    .header-right {
+      .ant-btn {
+        border-radius: 6px;
+
+        &.ant-btn-primary {
+          background: rgba(255, 255, 255, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(10px);
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+          }
+        }
+
+        &:not(.ant-btn-primary) {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+          }
+        }
+      }
+
+      .ant-select {
+        .ant-select-selector {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+          }
+        }
+
+        .ant-select-arrow {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .metrics-row {
+    margin-bottom: 24px;
+
+    .metric-card {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #1890ff, #52c41a, #faad14, #f5222d);
+      }
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .ant-card-body {
+        padding: 24px;
+      }
+
+      .ant-statistic {
+        .ant-statistic-title {
+          font-size: 14px;
+          color: #8c8c8c;
+          margin-bottom: 8px;
+        }
+
+        .ant-statistic-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .ant-statistic-content-value {
+            font-size: 28px;
+            font-weight: 600;
+            color: #262626;
+          }
+
+          .ant-statistic-content-prefix {
+            margin-right: 8px;
+            font-size: 20px;
+          }
+        }
+      }
+
+      .growth-rate {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .today-data {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #f0f0f0;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .details-row {
+    margin-bottom: 24px;
+
+    .chart-card {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      height: 100%;
+
+      .ant-card-head {
+        border-bottom: 1px solid #f0f0f0;
+
+        .ant-card-head-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #262626;
+        }
+      }
+
+      .ant-card-body {
+        padding: 0;
+      }
+
+      .ant-table {
+        .ant-table-thead > tr > th {
+          background-color: #fafafa;
+          border-bottom: 1px solid #f0f0f0;
+          font-weight: 600;
+          color: #262626;
+          font-size: 12px;
+        }
+
+        .ant-table-tbody > tr {
+          &:hover {
+            background-color: #f5f5f5;
+          }
+
+          td {
+            border-bottom: 1px solid #f5f5f5;
+            padding: 12px 16px;
+          }
+        }
+
+        .rank-badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 24px;
+          height: 24px;
+
+          .rank-number {
+            font-weight: 600;
+            color: #8c8c8c;
+          }
+        }
+      }
+    }
+  }
+
+  .category-row {
+    .category-card {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      .ant-card-head {
+        border-bottom: 1px solid #f0f0f0;
+
+        .ant-card-head-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #262626;
+        }
+      }
+
+      .category-item {
+        padding: 20px;
+        border: 1px solid #f0f0f0;
+        border-radius: 8px;
+        background: white;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #d9d9d9;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 16px;
+
+          .category-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+          }
+        }
+
+        .category-stats {
+          margin-bottom: 16px;
+
+          .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        .ant-progress {
+          .ant-progress-bg {
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .ant-card {
+    .ant-card-body {
+      padding: 24px;
+    }
+  }
+
+  .ant-tag {
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 2px 8px;
+  }
+
+  .ant-btn {
+    border-radius: 6px;
+    font-weight: 500;
+
+    &.ant-btn-primary {
+      background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+      border: none;
+      box-shadow: 0 2px 4px rgba(24, 144, 255, 0.3);
+
+      &:hover {
+        background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(24, 144, 255, 0.4);
+      }
+    }
+  }
+}
+
+// 响应式布局
+@media (max-width: 768px) {
+  .statistics-manage-container {
+    padding: 16px;
+
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+
+      .header-right {
+        width: 100%;
+
+        .ant-space {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .ant-btn,
+        .ant-select {
+          flex: 1;
+        }
+      }
+    }
+
+    .metrics-row {
+      .metric-card {
+        .ant-card-body {
+          padding: 16px;
+        }
+
+        .ant-statistic {
+          .ant-statistic-content {
+            .ant-statistic-content-value {
+              font-size: 24px;
+            }
+          }
+        }
+      }
+    }
+
+    .details-row {
+      .chart-card {
+        margin-bottom: 16px;
+
+        .ant-table {
+          .ant-table-content {
+            overflow-x: auto;
+          }
+        }
+      }
+    }
+
+    .category-row {
+      .category-item {
+        padding: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .statistics-manage-container {
+    padding: 12px;
+
+    .page-header {
+      padding: 16px;
+    }
+
+    .metrics-row {
+      .metric-card {
+        .ant-card-body {
+          padding: 12px;
+        }
+
+        .ant-statistic {
+          .ant-statistic-content {
+            .ant-statistic-content-value {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    .details-row {
+      .chart-card {
+        .ant-table {
+          // 隐藏部分列以适应小屏幕
+          .ant-table-thead > tr > th:nth-child(4),
+          .ant-table-tbody > tr > td:nth-child(4),
+          .ant-table-thead > tr > th:nth-child(5),
+          .ant-table-tbody > tr > td:nth-child(5) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .category-row {
+      .category-item {
+        padding: 12px;
+      }
+    }
+  }
+}
