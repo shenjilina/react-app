@@ -45,7 +45,7 @@ pnpm preview
 - **语言**: TypeScript
 - **构建工具**: Vite
 - **样式**: TailwindCSS + Less
-- **代码质量**: ESLint + Prettier + Husky
+- **代码质量**: ESLint + Prettier
 - **路由**: React Router
 
 ## 📁 项目结构
