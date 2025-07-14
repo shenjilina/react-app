@@ -7,7 +7,7 @@ export interface ApiResponse<T = any> {
   code: number
   message: string
   data: T
-  success: boolean
+  success?: boolean
 }
 
 // 请求配置接口
@@ -44,9 +44,9 @@ class ApiClient {
     this.instance.interceptors.request.use(
       (config: any) => {
         // 添加认证token
-        const token = localStorage.getItem('auth_token')
+        const token = localStorage.getItem('token')
         if (token) {
-          config.headers.Authorization = `Bearer ${token}`
+          config.headers.Authorization = token
         }
 
         // 显示loading
@@ -68,7 +68,7 @@ class ApiClient {
    */
   private setupResponseInterceptor(): void {
     this.instance.interceptors.response.use(
-      (response: AxiosResponse<ApiResponse>) => {
+      (response: AxiosResponse) => {
         this.hideLoading()
         const { data } = response
         const config = response.config as RequestConfig
@@ -89,7 +89,6 @@ class ApiClient {
         return Promise.reject(new Error(data.message || '请求失败'))
       },
       (error: AxiosError) => {
-        debugger;
         this.hideLoading()
         this.handleError(error)
         return Promise.reject(error)

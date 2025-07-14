@@ -27,7 +27,6 @@ const Register: React.FC = () => {
       message.success('注册成功！请使用新账户登录')
 
       // 注册成功后跳转到登录页面
-      debugger;
       navigate('/login', { replace: true })
     } catch (error) {
       message.error('注册失败，请稍后重试')

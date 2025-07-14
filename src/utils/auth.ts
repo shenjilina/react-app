@@ -1,4 +1,5 @@
 // 认证相关工具函数
+import { AuthApi } from '@/api/modules/auth'
 
 /**
  * 检查用户是否已登录
@@ -45,28 +46,43 @@ export const setAuth = (token: string, userInfo: any): void => {
 }
 
 /**
- * 验证 token 是否有效（这里可以添加更复杂的验证逻辑）
- * @param {string} token - 要验证的 token
- * @returns {boolean} token 是否有效
+ * 异步验证 token 是否有效（调用后端API）
+ * @returns {Promise<boolean>} token 是否有效
  */
-export const validateToken = (token: string): boolean => {
-  // 这里可以添加 token 格式验证、过期时间检查等逻辑
-  // 目前只做简单的非空检查
-  return !!token && token.length > 0
+export const validateToken = async (): Promise<boolean> => {
+  try {
+    const res = await AuthApi.verifyToken()
+    return res.data.valid
+  } catch (error) {
+    return false
+  }
 }
 
 /**
- * 检查 token 是否过期（示例实现）
+ * 检查 token 是否过期
  * @returns {boolean} token 是否过期
  */
 export const isTokenExpired = (): boolean => {
   const token = getToken()
   if (!token) return true
-  
-  // 这里可以添加实际的 token 过期检查逻辑
-  // 例如解析 JWT token 的过期时间
-  // 目前返回 false 表示不过期
-  return false
+
+  try {
+    // 解析 JWT token 检查过期时间
+    const parts = token.split('.')
+    if (parts.length !== 3) return true
+    
+    const payload = JSON.parse(atob(parts[1]))
+    const currentTime = Math.floor(Date.now() / 1000)
+    
+    // 如果有过期时间且已过期，返回 true
+    if (payload.exp && payload.exp < currentTime) {
+      return true
+    }
+    
+    return false
+  } catch (error) {
+    return true
+  }
 }
 
 /**

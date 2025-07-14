@@ -76,17 +76,37 @@ export class AuthApi {
    * 用户登出
    */
   static logout(): Promise<ApiResponse<void>> {
-    return apiClient.post('/auth/logout', {}, {
-      showLoading: true,
-      showSuccess: true,
-      showError: true,
-    })
+    return apiClient.post(
+      '/auth/logout',
+      {},
+      {
+        showLoading: true,
+        showSuccess: true,
+        showError: true,
+      }
+    )
+  }
+
+  /**
+   * Token 验证
+   */
+  static verifyToken(): Promise<ApiResponse<{ valid: boolean }>> {
+    return apiClient.post(
+      '/auth/verify-token',
+      {},
+      {
+        showLoading: false,
+        showError: false,
+      }
+    )
   }
 
   /**
    * 刷新Token
    */
-  static refreshToken(params: RefreshTokenParams): Promise<ApiResponse<{ token: string }>> {
+  static refreshToken(
+    params: RefreshTokenParams
+  ): Promise<ApiResponse<{ token: string }>> {
     return apiClient.post('/auth/refresh-token', params, {
       showLoading: false,
       showError: true,
@@ -106,7 +126,9 @@ export class AuthApi {
   /**
    * 修改密码
    */
-  static changePassword(params: ChangePasswordParams): Promise<ApiResponse<void>> {
+  static changePassword(
+    params: ChangePasswordParams
+  ): Promise<ApiResponse<void>> {
     return apiClient.post('/auth/change-password', params, {
       showLoading: true,
       showSuccess: true,
@@ -117,7 +139,9 @@ export class AuthApi {
   /**
    * 重置密码
    */
-  static resetPassword(params: ResetPasswordParams): Promise<ApiResponse<void>> {
+  static resetPassword(
+    params: ResetPasswordParams
+  ): Promise<ApiResponse<void>> {
     return apiClient.post('/auth/reset-password', params, {
       showLoading: true,
       showSuccess: true,
@@ -129,21 +153,15 @@ export class AuthApi {
    * 发送验证码
    */
   static sendCaptcha(email: string): Promise<ApiResponse<void>> {
-    return apiClient.post('/auth/send-captcha', { email }, {
-      showLoading: true,
-      showSuccess: true,
-      showError: true,
-    })
-  }
-
-  /**
-   * 验证Token有效性
-   */
-  static validateToken(): Promise<ApiResponse<{ valid: boolean }>> {
-    return apiClient.get('/auth/validate-token', {
-      showLoading: false,
-      showError: false,
-    })
+    return apiClient.post(
+      '/auth/send-captcha',
+      { email },
+      {
+        showLoading: true,
+        showSuccess: true,
+        showError: true,
+      }
+    )
   }
 }
 

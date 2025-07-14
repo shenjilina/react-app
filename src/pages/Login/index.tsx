@@ -2,9 +2,8 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Card, Form, Input, Typography, message } from 'antd'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { setAuth } from '../../utils/auth'
+import { setAuth } from '../../utils/auth.ts'
 import { AuthApi } from '@/api/modules/auth'
-import type { LoginParams } from '@/api/modules/auth'
 import './index.less'
 
 const { Title } = Typography
@@ -26,31 +25,13 @@ const Login: React.FC = () => {
         username: values.username,
         password: values.password,
       })
-      debugger;
-
-      // 模拟登录验证
-      if (values.username === 'admin' && values.password === '123456') {
-        // 生成模拟token
-        const token = 'mock_token_' + Date.now()
-
-        // 模拟用户信息
-        const mockUserInfo = {
-          id: 1,
-          username: values.username,
-          name: '管理员',
-          role: 'admin',
-          loginTime: new Date().toISOString(),
-        }
-
-        // 使用认证工具函数设置认证信息
-        setAuth(token, mockUserInfo)
-
+      if(res.code === 200) {
+        const { token, userInfo } = res.data
+        setAuth(token, userInfo)
         message.success('登录成功！')
 
         // 跳转到首页
-        navigate('/dashboard', { replace: true })
-      } else {
-        message.error('用户名或密码错误！请使用 admin/123456')
+        navigate('/home', { replace: true })
       }
     } catch (error) {
       message.error('登录失败，请检查用户名和密码')

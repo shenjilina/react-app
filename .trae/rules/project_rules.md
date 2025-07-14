@@ -167,13 +167,6 @@ export interface RouteConfig {
 // ✅ 路由配置数据
 export const routeConfig: RouteConfig[] = [
   {
-    key: '1',
-    path: '/dashboard',
-    title: '仪表盘',
-    icon: 'DashboardOutlined',
-    requireAuth: true
-  },
-  {
     key: '2',
     path: '/system',
     title: '系统管理',

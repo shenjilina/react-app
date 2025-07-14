@@ -11,6 +11,18 @@ export interface RouteConfig {
 // 路由配置数据
 export const routeConfig: RouteConfig[] = [
   {
+    key: '0-1',
+    path: '/login',
+    title: '登录',
+    requireAuth: false
+  },
+  {
+    key: '0-2',
+    path: '/register',
+    title: '注册',
+    requireAuth: false
+  },
+  {
     key: '1',
     path: '/home',
     title: '首页',

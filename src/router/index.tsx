@@ -28,7 +28,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   const tokenExpired = isTokenExpired()
 
   // 检查是否有有效的 token
-  if (!authenticated || !token || !validateToken(token) || tokenExpired) {
+  if (!authenticated || !token || !validateToken() || tokenExpired) {
     return <Navigate to='/login' replace />
   }
 
@@ -48,7 +48,7 @@ const RouteGuard: React.FC<{ children: React.ReactNode; path: string }> = ({
   // 如果路由需要认证但没有有效 token，跳转到登录页
   if (
     needsAuth &&
-    (!authenticated || !token || !validateToken(token) || tokenExpired)
+    (!authenticated || !token || !validateToken() || tokenExpired)
   ) {
     return <Navigate to='/login' replace />
   }
@@ -58,10 +58,10 @@ const RouteGuard: React.FC<{ children: React.ReactNode; path: string }> = ({
     path === '/login' &&
     authenticated &&
     token &&
-    validateToken(token) &&
+    validateToken() &&
     !tokenExpired
   ) {
-    return <Navigate to='/dashboard' replace />
+    return <Navigate to='/home' replace />
   }
 
   return <>{children}</>
